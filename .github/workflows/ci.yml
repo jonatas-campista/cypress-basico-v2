@@ -2,11 +2,16 @@ name: End-to-end tests 🧪
 on: [push]
 jobs:
   cypress-run:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+      - name: Check out the repository
+        uses: actions/checkout@v3 # Atualize para a versão mais recente
+      - name: Set up Node.js
+        uses: actions/setup-node@v3 # Atualize para usar uma versão mais nova do Node.js
+        with:
+          node-version: '16' # Use Node.js 16 ou uma versão superior
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5 # Atualize para a versão mais recente
+        with:
+          build: npm run build
+          start: npm start
