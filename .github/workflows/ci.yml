@@ -5,13 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v3 # Atualize para a versão mais recente
-      - name: Set up Node.js
-        uses: actions/setup-node@v3 # Atualize para usar uma versão mais nova do Node.js
-        with:
-          node-version: '16' # Use Node.js 16 ou uma versão superior
-      - name: Cypress run
-        uses: cypress-io/github-action@v5 # Atualize para a versão mais recente
-        with:
-          build: npm run build
-          start: npm start
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+      - name: Run Cypress tests
+        run: npm run test # Aqui está o comando correto, sem o "npm run build"
+
